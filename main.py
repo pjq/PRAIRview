@@ -45,7 +45,7 @@ def review_patch_file(patch_file_path):
         messages=[
             {
                 "role": "user",
-                "content": f"Review the following patch:\n{patch_content}",
+                "content": f"Work as world class developer, Review the following patch, and show the suggestions:\n{patch_content}",
             },
         ],
         stream=True,
