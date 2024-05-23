@@ -2,6 +2,7 @@ import json
 import requests
 import openai
 import asyncio
+from openai import OpenAI
 
 def load_config():
     with open('config.json', 'r') as config_file:
@@ -11,6 +12,8 @@ config = load_config()
 # Set the OpenAI base URL and API key
 openai.api_key = config['openai_api_key']
 openai.base_url = config['openai_base_url']
+
+client = OpenAI()
 
 def download_pull_request(pr_number):
     headers = {'Authorization': f'token {config["access_token"]}'}
@@ -37,7 +40,7 @@ async def review_patch_file(patch_file_path):
     with open(patch_file_path, 'r') as file:
         patch_content = file.read()
     
-    stream = await openai.ChatCompletion.acreate(
+    stream = client.chat.completions.create(
         model=config['llm_model'],  # Updated to use the model specified in config
         messages=[
             {
