@@ -12,7 +12,7 @@ cp config.json.example config.json
 ```
 
 ```shell
-pip3 install -r requirements.txt
+pip3 install --upgrade -r requirements.txt
 python3 main.py
 ```
 

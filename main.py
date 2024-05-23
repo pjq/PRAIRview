@@ -35,7 +35,7 @@ def download_pull_request(pr_number):
     else:
         print(f"Failed to fetch PR {pr_number}")
 
-async def review_patch_file(patch_file_path):
+def review_patch_file(patch_file_path):
     print(f"review the PR patch: {patch_file_path}")
     with open(patch_file_path, 'r') as file:
         patch_content = file.read()
@@ -51,7 +51,7 @@ async def review_patch_file(patch_file_path):
         stream=True,
     )
     
-    async for chunk in stream:
+    for chunk in stream:
         print(chunk.choices[0].delta.content or "", end="")
 
 if __name__ == "__main__":
