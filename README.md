@@ -6,6 +6,11 @@ PRAIRview is a tool designed to streamline the code review process by leveraging
 
 ## Quick Start
 
+Update the config.json
+```shell
+cp config.json.example config.json
+```
+
 ```shell
 pip3 install -r requirements.txt
 python3 main.py
